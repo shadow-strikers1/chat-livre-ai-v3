@@ -1,9 +1,8 @@
-// Firebase config — não é segredo. Substitua pelos dados do seu projeto Firebase.
-const FIREBASE_CONFIG = {
-  apiKey: "COLE_SUA_FIREBASE_API_KEY",
-  authDomain: "SEU_PROJETO.firebaseapp.com",
-  projectId: "SEU_PROJECT_ID",
-  storageBucket: "SEU_PROJETO.firebasestorage.app",
-  messagingSenderId: "SEU_SENDER_ID",
-  appId: "SEU_APP_ID"
+const firebaseConfig = {
+  apiKey: "AIzaSyBptcBXdYD8kfZtZIFoWmv0outPiuuKbqQ",
+  authDomain: "chat-livre-ai-v2.firebaseapp.com",
+  projectId: "chat-livre-ai-v2",
+  storageBucket: "chat-livre-ai-v2.firebasestorage.app",
+  messagingSenderId: "367169410928",
+  appId: "1:367169410928:web:48d0b5fb5221443ebd61b5"
 };
