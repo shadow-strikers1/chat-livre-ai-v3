@@ -3,31 +3,23 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    // Cada usuário autenticado só pode acessar seus próprios dados.
-    // O login usado pelo Chat Livre AI é anônimo, então o UID do Firebase
-    // continua sendo a identidade de cada sessão/usuário.
     function isOwner(userId) {
-      return request.auth != null && request.auth.uid == userId;
+      return request.auth != null
+          && request.auth.uid == userId;
     }
 
-    // Perfil/raiz do usuário.
-    // O frontend atual não precisa gravar dados diretamente em /users/{uid},
-    // mas a regra permite o acesso ao próprio documento caso isso seja usado no futuro.
     match /users/{userId} {
       allow read, write: if isOwner(userId);
 
-      // Conversas do usuário.
       match /chats/{chatId} {
         allow read, write: if isOwner(userId);
 
-        // Mensagens pertencem à conversa e ao mesmo usuário.
         match /messages/{messageId} {
           allow read, write: if isOwner(userId);
         }
       }
     }
 
-    // Qualquer outro documento fica bloqueado por padrão.
     match /{document=**} {
       allow read, write: if false;
     }
